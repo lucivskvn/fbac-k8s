@@ -1,16 +1,16 @@
-FROM node:10
+FROM node:12
 
-RUN mkdir -p /app
-WORKDIR /app
+RUN mkdir -p /frontend
 
-# Copy app directory
-COPY . /app
+COPY . /frontend
 
-# Install and cache app dependencies
-RUN npm install --silent
-RUN npm install -g @angular/cli@1.7.1
+WORKDIR /frontend
+
+#  RUN npm install --silent 
+RUN npm install --silent && npm audit fix
 
 EXPOSE 4200
 
 # Start app
-CMD ng serve --host 0.0.0.0 --disableHostCheck
+WORKDIR /frontend
+CMD npm start

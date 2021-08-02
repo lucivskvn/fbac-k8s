@@ -7,8 +7,12 @@ import {
 } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { ApiService, UserService } from "../../_services/index";
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { TooltipPosition } from "@angular/material/tooltip";
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  TooltipPosition,
+} from "@angular/material";
 import {
   animate,
   state,

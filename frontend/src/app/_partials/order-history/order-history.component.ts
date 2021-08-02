@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { ApiService } from "./../../_services/index";
+import { ApiService } from "../../_services/index";
 
 @Component({
   selector: "order-history",
