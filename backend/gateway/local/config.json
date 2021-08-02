@@ -1,0 +1,6 @@
+{
+  "wallet": "../gateway/local/wallets",
+  "connection_profile_filename": "../gateway/local/fabric.json",
+  "channel_name": "channeru",
+  "smart_contract_name": "test-chaincode"
+}

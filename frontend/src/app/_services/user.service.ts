@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { User } from '../_models/user';
+import { Injectable } from "@angular/core";
+import { User } from "../_models/user";
 
 @Injectable()
 export class UserService {
@@ -27,8 +27,8 @@ export class UserService {
     //   password: "adminpw",
     //   usertype: "admin"
     // }
-    let user = localStorage.getItem('currentUser');
-    if (user){
+    let user = localStorage.getItem("currentUser");
+    if (user) {
       this.currentUser = JSON.parse(user);
     }
   }

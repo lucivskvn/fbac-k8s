@@ -1,7 +1,7 @@
 {
-  "name": "gen_supply_chain_server",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "API server for Blockchain Generic Supply Chain",
+  "description": "API server",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,13 +16,8 @@
     "fabric-client": "1.4.0",
     "fabric-network": "1.4.0",
     "http-errors": "~1.6.2",
-    "ibm-cloud-env": "^0.2.6",
     "passport": "^0.4.0",
     "yamljs": "^0.3.0"
-  },
-  "engines": {
-    "node": "8.11.x",
-    "npm": "5.6.x"
   },
   "devDependencies": {
     "bluebird": "3.5.4",
@@ -44,8 +39,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IBM/fabric-contract-attribute-based-access-control"
+    "url": "https://github.com/lucivskvn/fbac-k8s"
   },
-  "author": "Ann Umberhocker",
+  "author": "Elang",
   "license": "ISC"
 }
