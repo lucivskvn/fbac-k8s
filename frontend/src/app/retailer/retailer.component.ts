@@ -5,7 +5,7 @@ import { UserService } from "../_services/index";
   selector: "app-retailer",
   templateUrl: "./retailer.component.html",
   styleUrls: ["./retailer.component.scss"],
-  providers: [],
+  providers: []
 })
 export class RetailerComponent implements OnInit {
   currentUser: any;

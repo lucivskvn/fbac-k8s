@@ -61,7 +61,7 @@ import { AuthGuard } from "./_guards/auth.guard";
     OrderHistoryComponent,
     OrdersTableComponent,
     ToShipperDialog,
-    DeleteOrderDialog,
+    DeleteOrderDialog
   ],
   imports: [
     BrowserModule,
@@ -76,10 +76,10 @@ import { AuthGuard } from "./_guards/auth.guard";
     MatInputModule,
     MatTabsModule,
     MatTableModule,
-    MatToolbarModule,
+    MatToolbarModule
   ],
   providers: [ApiService, AuthService, UserService, AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [ToShipperDialog, DeleteOrderDialog],
+  entryComponents: [ToShipperDialog, DeleteOrderDialog]
 })
 export class AppModule {}

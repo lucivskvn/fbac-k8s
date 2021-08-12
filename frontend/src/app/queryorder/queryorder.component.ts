@@ -8,7 +8,7 @@ import { ApiService } from "../_services/api.service";
 @Component({
   selector: "app-contact",
   templateUrl: "./queryorder.component.html",
-  styleUrls: ["./queryorder.component.scss"],
+  styleUrls: ["./queryorder.component.scss"]
 })
 export class QueryorderComponent implements OnInit {
   messageForm: FormGroup;
@@ -20,7 +20,7 @@ export class QueryorderComponent implements OnInit {
 
   ngOnInit() {
     this.messageForm = this.formBuilder.group({
-      orderid: ["", Validators.required],
+      orderid: ["", Validators.required]
     });
   }
 
@@ -34,12 +34,12 @@ export class QueryorderComponent implements OnInit {
     this.api.id = this.messageForm.controls.orderid.value;
 
     this.api.queryOrder().subscribe(
-      (api) => {
+      api => {
         this.order = api;
         this.success = true;
         console.log(this.order);
       },
-      (error) => {
+      error => {
         this.success = false;
         console.log(JSON.stringify(error));
         alert("Query order failed: " + error["error"]["message"]);

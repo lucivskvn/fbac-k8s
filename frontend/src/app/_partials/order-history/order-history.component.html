@@ -12,12 +12,7 @@
     mat-form-field-hide-placeholder
   "
 >
-  <input
-    matInput
-    #order
-    placeholder="Enter Order ID"
-    (keydown.enter)="getHistory(order.value)"
-  />
+  <input matInput #order placeholder="Enter Order ID" (keydown.enter)="getHistory(order.value)" />
   <mat-icon matSuffix (click)="getHistory(order.value)">search</mat-icon>
 </mat-form-field>
 <table mat-table [dataSource]="history" class="mat-elevation-z8">

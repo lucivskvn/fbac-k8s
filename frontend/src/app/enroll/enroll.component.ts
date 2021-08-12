@@ -6,7 +6,7 @@ import { AuthService } from "../_services/index";
   selector: "app-enroll",
   templateUrl: "./enroll.component.html",
   styleUrls: ["./enroll.component.scss"],
-  providers: [],
+  providers: []
 })
 export class EnrollComponent {
   model: any = {};
@@ -14,19 +14,17 @@ export class EnrollComponent {
   types: any[];
 
   constructor(private router: Router, private authService: AuthService) {
-    this.types = ["retailer", "producer", "shipper", "customer", "regulator"];
+    this.types = ["Retailer", "Producer", "Shipper", "Customer", "Regulator"];
   }
 
   enroll() {
     this.loading = true;
     this.authService.enroll(this.model).subscribe(
-      (data) => {
-        alert(
-          "Enrollment was successful. User can log in to be taken to their portal."
-        );
+      data => {
+        alert("Enrollment was successful. User can log in to be taken to their portal.");
         this.router.navigate(["/login"]);
       },
-      (error) => {
+      error => {
         this.loading = false;
         console.log(JSON.stringify(error));
         alert("Enrollment failed: " + error["error"]["message"]);

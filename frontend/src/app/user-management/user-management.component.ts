@@ -8,7 +8,7 @@ import { MatTableDataSource } from "@angular/material/table";
   selector: "app-user-management",
   templateUrl: "./user-management.component.html",
   styleUrls: ["./user-management.component.scss"],
-  providers: [],
+  providers: []
 })
 export class UserManagementComponent implements OnInit {
   newUser: Object;
@@ -21,11 +21,7 @@ export class UserManagementComponent implements OnInit {
   allUsers: MatTableDataSource<EditUser[]>;
   columnsToDisplay = ["id", "usertype", "enrolled"];
 
-  constructor(
-    private api: ApiService,
-    private auth: AuthService,
-    private formBuilder: FormBuilder
-  ) {}
+  constructor(private api: ApiService, private auth: AuthService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.types = ["retailer", "producer", "shipper", "customer", "regulator"];
@@ -34,7 +30,7 @@ export class UserManagementComponent implements OnInit {
       id: ["", Validators.required],
       password: ["", Validators.required],
       confirm_password: ["", Validators.required],
-      usertype: ["", Validators.required],
+      usertype: ["", Validators.required]
     });
 
     // get all users
@@ -48,10 +44,7 @@ export class UserManagementComponent implements OnInit {
       return;
     }
 
-    if (
-      this.newUserForm.controls.password.value !=
-      this.newUserForm.controls.confirm_password.value
-    ) {
+    if (this.newUserForm.controls.password.value != this.newUserForm.controls.confirm_password.value) {
       console.log("the passwords don't match");
       this.success = false;
       return;
@@ -60,16 +53,16 @@ export class UserManagementComponent implements OnInit {
     var user = {
       userid: this.newUserForm.controls.id.value,
       password: this.newUserForm.controls.password.value,
-      usertype: this.newUserForm.controls.usertype.value,
+      usertype: this.newUserForm.controls.usertype.value
     };
 
     console.log(user);
     this.auth.register(user).subscribe(
-      (res) => {
+      res => {
         console.log(JSON.stringify(res));
         this.success = true;
       },
-      (error) => {
+      error => {
         console.log(JSON.stringify(error));
         this.success = false;
       }
@@ -79,7 +72,7 @@ export class UserManagementComponent implements OnInit {
   loadUserList(tab) {
     if (tab == 0) {
       this.api.getAllUsers().subscribe(
-        (res) => {
+        res => {
           var userArray = Object.keys(res).map(function (userIndex) {
             let user = res[userIndex];
             // do something with person
@@ -89,18 +82,18 @@ export class UserManagementComponent implements OnInit {
           for (let user of userArray) {
             this.api.id = user.id;
             this.api.isUserEnrolled().subscribe(
-              (res) => {
+              res => {
                 // NOTE: adding a new user attribute called enrolled
                 user.enrolled = res;
               },
-              (error) => {
+              error => {
                 console.log(JSON.stringify(error));
               }
             );
           }
           this.allUsers = new MatTableDataSource(userArray);
         },
-        (error) => {
+        error => {
           console.log(JSON.stringify(error));
           alert("Problem loading user list: " + error["error"]["message"]);
         }
