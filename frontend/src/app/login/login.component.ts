@@ -6,18 +6,14 @@ import { ApiService, UserService } from "../_services/index";
   selector: "app-login",
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.scss"],
-  providers: [],
+  providers: []
 })
 export class LoginComponent {
   model: any = {};
   loading = false;
   returnUrl: string;
 
-  constructor(
-    private router: Router,
-    private apiService: ApiService,
-    private userService: UserService
-  ) {}
+  constructor(private router: Router, private apiService: ApiService, private userService: UserService) {}
 
   login() {
     console.log("In login ()");
@@ -26,14 +22,14 @@ export class LoginComponent {
     var user = {
       userid: this.model.userid,
       password: this.model.password,
-      usertype: "",
+      usertype: ""
     };
 
     this.apiService.id = this.model.userid;
     this.apiService.pwd = this.model.password;
 
     this.apiService.getUser().subscribe(
-      (res) => {
+      res => {
         user.usertype = res["usertype"];
         this.userService.setCurrentUser(user);
         localStorage.setItem("currentUser", JSON.stringify(user));
@@ -43,7 +39,7 @@ export class LoginComponent {
           this.router.navigate([res["usertype"]]);
         }
       },
-      (error) => {
+      error => {
         console.log(JSON.stringify(error));
         alert("Login failed: ");
         this.loading = false;

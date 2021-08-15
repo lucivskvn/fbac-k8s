@@ -5,7 +5,7 @@ import { UserService } from "../_services/index";
   selector: "app-regulator",
   templateUrl: "./regulator.component.html",
   styleUrls: ["./regulator.component.scss"],
-  providers: [],
+  providers: []
 })
 export class RegulatorComponent implements OnInit {
   currentUser: any;

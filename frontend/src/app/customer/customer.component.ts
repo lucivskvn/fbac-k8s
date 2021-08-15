@@ -5,7 +5,7 @@ import { UserService } from "../_services/index";
   selector: "app-customer",
   templateUrl: "./customer.component.html",
   styleUrls: ["./customer.component.scss"],
-  providers: [],
+  providers: []
 })
 export class CustomerComponent implements OnInit {
   currentUser: any;

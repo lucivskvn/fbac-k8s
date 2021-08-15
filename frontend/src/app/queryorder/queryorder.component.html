@@ -4,13 +4,8 @@
     <label>
       Order ID:
       <input type="text" formControlName="orderid" />
-      <div
-        *ngIf="submitted && messageForm.controls.orderid.errors"
-        class="error"
-      >
-        <div *ngIf="messageForm.controls.orderid.errors.required">
-          Order ID is required
-        </div>
+      <div *ngIf="submitted && messageForm.controls.orderid.errors" class="error">
+        <div *ngIf="messageForm.controls.orderid.errors.required">Order ID is required</div>
       </div>
     </label>
     <input type="submit" style="width: 90px" value="Submit" class="cta" />

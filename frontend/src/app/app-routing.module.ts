@@ -24,22 +24,22 @@ const routes: Routes = [
   {
     path: "regulator",
     component: RegulatorComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard]
   },
   { path: "retailer", component: RetailerComponent, canActivate: [AuthGuard] },
   { path: "shipper", component: ShipperComponent, canActivate: [AuthGuard] },
   {
     path: "users",
     component: UserManagementComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard]
   },
 
   // otherwise redirect to login
-  { path: "**", redirectTo: "/login" },
+  { path: "**", redirectTo: "/login" }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: "legacy" })],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

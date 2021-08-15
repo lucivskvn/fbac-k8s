@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ApiService, UserService } from "./../../_services/index";
-import { MatDialog } from "@angular/material";
+import { ApiService, UserService } from "../../_services/index";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "order-form",
   templateUrl: "./order-form.component.html",
-  styleUrls: ["./order-form.component.scss"],
+  styleUrls: ["./order-form.component.scss"]
 })
 export class OrderFormComponent implements OnInit {
   messageForm: FormGroup;
@@ -36,7 +36,7 @@ export class OrderFormComponent implements OnInit {
       productid: ["", Validators.required],
       price: ["", Validators.required],
       quantity: ["", Validators.required],
-      producerid: ["", Validators.required],
+      producerid: ["", Validators.required]
     });
   }
 
@@ -53,18 +53,18 @@ export class OrderFormComponent implements OnInit {
       price: this.messageForm.controls.price.value,
       quantity: this.messageForm.controls.quantity.value,
       producerId: this.messageForm.controls.producerid.value,
-      retailerId: this.currentUser.userid,
+      retailerId: this.currentUser.userid
     };
 
     this.api.orderProduct().subscribe(
-      (api) => {
+      api => {
         this.order = api;
         console.log(this.order);
         this.api.queryOrders();
         this.success = true;
         //alert ("Order Created Successfully!")
       },
-      (error) => {
+      error => {
         this.success = false;
         alert("Problem creating Order: " + error["error"]["message"]);
       }
@@ -75,7 +75,7 @@ export class OrderFormComponent implements OnInit {
   getProducers() {
     this.producers = [];
     this.api.getAllUsers().subscribe(
-      (allUsers) => {
+      allUsers => {
         var userArray = Object.keys(allUsers).map(function (userIndex) {
           let user = allUsers[userIndex];
           // do something with person
@@ -90,7 +90,7 @@ export class OrderFormComponent implements OnInit {
         console.log("List of Producers: ");
         console.log(this.producers);
       },
-      (error) => {
+      error => {
         console.log(JSON.stringify(error));
         alert("Problem getting list of users: " + error["error"]["message"]);
       }

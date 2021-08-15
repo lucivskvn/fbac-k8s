@@ -4,7 +4,7 @@ import { UserService } from "../_services/index";
 @Component({
   selector: "app-producer",
   templateUrl: "./producer.component.html",
-  styleUrls: ["./producer.component.scss"],
+  styleUrls: ["./producer.component.scss"]
 })
 export class ProducerComponent implements OnInit {
   currentUser: any;

@@ -6,9 +6,12 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+<<<<<<< HEAD
     "module": "esnext",
+=======
+    "module": "es2020",
+>>>>>>> next
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",

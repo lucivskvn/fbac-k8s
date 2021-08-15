@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { UserService } from "./user.service";
-import { BehaviorSubject, Observable } from "../../../node_modules/rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
-  providedIn: "root",
+  providedIn: "root"
 })
 export class ApiService {
   id: String = "";
@@ -22,15 +22,12 @@ export class ApiService {
     4: "SHIPMENT_CREATED",
     5: "SHIPMENT_IN_TRANSIT",
     6: "SHIPMENT_RECEIVED",
-    7: "ORDER_CLOSED",
+    7: "ORDER_CLOSED"
   };
 
   baseUrl = "http://localhost:3000";
 
-  constructor(
-    private httpClient: HttpClient,
-    private userService: UserService
-  ) {}
+  constructor(private httpClient: HttpClient, private userService: UserService) {}
 
   getAllStatuses() {
     return this.statuses;
@@ -38,10 +35,7 @@ export class ApiService {
 
   createUserAuthorizationHeader(headers: HttpHeaders) {
     const currentUser = this.userService.getCurrentUser();
-    return headers.append(
-      "Authorization",
-      "Basic " + btoa(currentUser.userid + ":" + currentUser.password)
-    );
+    return headers.append("Authorization", "Basic " + btoa(currentUser.userid + ":" + currentUser.password));
   }
 
   //  This API is used:
@@ -55,7 +49,7 @@ export class ApiService {
     // replace with this line to pass in the current user vs admin
     //headers = this.createUserAuthorizationHeader(headers);
     return this.httpClient.get(this.baseUrl + "/api/users/", {
-      headers: headers,
+      headers: headers
     });
   }
 
@@ -69,7 +63,7 @@ export class ApiService {
     // replace with this line to pass in the user trying to log in vs admin
     //headers = headers.append('Authorization', 'Basic ' + btoa(this.id+':'+this.pwd));
     return this.httpClient.get(this.baseUrl + "/api/users/" + this.id, {
-      headers: headers,
+      headers: headers
     });
   }
 
@@ -77,10 +71,7 @@ export class ApiService {
   isUserEnrolled() {
     let headers = new HttpHeaders();
     headers = this.createUserAuthorizationHeader(headers);
-    return this.httpClient.get(
-      this.baseUrl + "/api/is-user-enrolled/" + this.id,
-      { headers: headers }
-    );
+    return this.httpClient.get(this.baseUrl + "/api/is-user-enrolled/" + this.id, { headers: headers });
   }
 
   // NOTE: This API isn't invoked by the UI application.  It is provided to be invoked by URL only
@@ -91,29 +82,27 @@ export class ApiService {
     //headers = this.createUserAuthorizationHeader(headers);
     headers = headers.append("Authorization", "Basic " + btoa("admin:adminpw"));
     return this.httpClient.get(this.baseUrl + "/api/orders/" + this.id, {
-      headers: headers,
+      headers: headers
     });
   }
 
   queryOrders() {
     let headers = new HttpHeaders();
     headers = this.createUserAuthorizationHeader(headers);
-    this.httpClient
-      .get<any[]>(this.baseUrl + "/api/orders/", { headers: headers })
-      .subscribe(
-        (orders) => {
-          console.log(orders);
-          // Add status to each order, based on this.statuses
-          for (let i of orders) {
-            i.status = this.statuses[i.currentOrderState];
-          }
-          this.OrdersData.next(orders);
-        },
-        (error) => {
-          console.log(JSON.stringify(error));
-          alert("Problem getting orders: " + error["error"]["message"]);
+    this.httpClient.get<any[]>(this.baseUrl + "/api/orders/", { headers: headers }).subscribe(
+      orders => {
+        console.log(orders);
+        // Add status to each order, based on this.statuses
+        for (let i of orders) {
+          i.status = this.statuses[i.currentOrderState];
         }
-      );
+        this.OrdersData.next(orders);
+      },
+      error => {
+        console.log(JSON.stringify(error));
+        alert("Problem getting orders: " + error["error"]["message"]);
+      }
+    );
   }
 
   clearOrders() {
@@ -124,7 +113,7 @@ export class ApiService {
     let headers = new HttpHeaders();
     headers = this.createUserAuthorizationHeader(headers);
     return this.httpClient.delete(this.baseUrl + "/api/orders/" + this.id, {
-      headers: headers,
+      headers: headers
     });
   }
 
@@ -132,7 +121,7 @@ export class ApiService {
     let headers = new HttpHeaders();
     headers = this.createUserAuthorizationHeader(headers);
     return this.httpClient.get(this.baseUrl + "/api/order-history/" + this.id, {
-      headers: headers,
+      headers: headers
     });
   }
 
@@ -140,61 +129,37 @@ export class ApiService {
     let headers = new HttpHeaders();
     headers = this.createUserAuthorizationHeader(headers);
     return this.httpClient.post(this.baseUrl + "/api/orders", this.body, {
-      headers: headers,
+      headers: headers
     });
   }
 
   receiveOrder() {
     let headers = new HttpHeaders();
     headers = this.createUserAuthorizationHeader(headers);
-    return this.httpClient.put(
-      this.baseUrl + "/api/receive-order/" + this.id,
-      {},
-      { headers: headers }
-    );
+    return this.httpClient.put(this.baseUrl + "/api/receive-order/" + this.id, {}, { headers: headers });
   }
 
   assignShipper() {
     let headers = new HttpHeaders();
     headers = this.createUserAuthorizationHeader(headers);
-    return this.httpClient.put(
-      this.baseUrl +
-        "/api/assign-shipper/" +
-        this.id +
-        "?shipperid=" +
-        this.shipperid,
-      {},
-      { headers: headers }
-    );
+    return this.httpClient.put(this.baseUrl + "/api/assign-shipper/" + this.id + "?shipperid=" + this.shipperid, {}, { headers: headers });
   }
 
   createShipment() {
     let headers = new HttpHeaders();
     headers = this.createUserAuthorizationHeader(headers);
-    return this.httpClient.put(
-      this.baseUrl + "/api/create-shipment-for-order/" + this.id,
-      {},
-      { headers: headers }
-    );
+    return this.httpClient.put(this.baseUrl + "/api/create-shipment-for-order/" + this.id, {}, { headers: headers });
   }
 
   transportShipment() {
     let headers = new HttpHeaders();
     headers = this.createUserAuthorizationHeader(headers);
-    return this.httpClient.put(
-      this.baseUrl + "/api/transport-shipment/" + this.id,
-      {},
-      { headers: headers }
-    );
+    return this.httpClient.put(this.baseUrl + "/api/transport-shipment/" + this.id, {}, { headers: headers });
   }
 
   receiveShipment() {
     let headers = new HttpHeaders();
     headers = this.createUserAuthorizationHeader(headers);
-    return this.httpClient.put(
-      this.baseUrl + "/api/receive-shipment/" + this.id,
-      {},
-      { headers: headers }
-    );
+    return this.httpClient.put(this.baseUrl + "/api/receive-shipment/" + this.id, {}, { headers: headers });
   }
 }
