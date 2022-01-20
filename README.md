@@ -4,6 +4,7 @@
 
 # Implement attribute based access control to provide end to end visibility into the supply chain history of a particular product 
 ![appDemo](https://media.github.ibm.com/user/79254/files/07a8c100-6786-11ea-91bb-b87d07dc71b7)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flucivskvn%2Ffbac-k8s.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Flucivskvn%2Ffbac-k8s?ref=badge_shield)
 
 This sample demonstrates an end to end blockchain application that connects to Hyperledger Fabric 1.4 or the IBM Blockchain Platform. It implements attribute based access control, user management, and a Angular front-end UI to interact and query the blockchain ledger. The 
 sample takes the user through ordering, shipping, and enlisting the product for the customer to 
@@ -314,3 +315,6 @@ Kaleen Iwema
 This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
 
 [Apache Software License (ASL) FAQ](http://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flucivskvn%2Ffbac-k8s.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Flucivskvn%2Ffbac-k8s?ref=badge_large)
